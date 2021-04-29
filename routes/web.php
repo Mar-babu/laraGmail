@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,4 +14,18 @@
 
 Route::get('/', function () {
     return view('welcome');
+});
+
+Route::get('/oauth/gmail', function (){
+    return \Dacastro4\LaravelGmail\Facade\LaravelGmail::redirect();
+});
+
+Route::get('/oauth/gmail/callback', function (){
+    \Dacastro4\LaravelGmail\Facade\LaravelGmail::makeToken();
+    return redirect()->to('/');
+});
+
+Route::get('/oauth/gmail/logout', function (){
+    \Dacastro4\LaravelGmail\Facade\LaravelGmail::logout(); //It returns exception if fails
+    return redirect()->to('/');
 });
