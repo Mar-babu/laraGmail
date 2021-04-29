@@ -29,3 +29,5 @@ Route::get('/oauth/gmail/logout', function (){
     \Dacastro4\LaravelGmail\Facade\LaravelGmail::logout(); //It returns exception if fails
     return redirect()->to('/');
 });
+
+Route::get('/inbox','InboxController@index');
