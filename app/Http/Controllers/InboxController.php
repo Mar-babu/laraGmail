@@ -9,6 +9,7 @@ class InboxController extends Controller
     public function index() {
         $messages = Facade\LaravelGmail::message()->subject('test')->unread()->preload()->all();
 
-        return view('inbox_old',compact('messages'));
+//        return view('inbox_old',compact('messages'));
+        return view('gmail.inbox',compact('messages'));
     }
 }
